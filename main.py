@@ -6,7 +6,6 @@ from tkinter import messagebox
 
 # Глобальная переменная для хранения пути к папке
 folder_path = ""
-
 # Создание окна
 root = tk.Tk()
 root.title("Ввод пути к папке")
@@ -68,21 +67,18 @@ def create_folders_and_move_files(folder_path):
                 current_path = os.path.join(current_path, part)
                 if not os.path.exists(current_path):
                     os.makedirs(current_path)
-
             # Если пользователь выбрал создание последней директории, добавляем ее
             if use_last_directory.get():
                 last_part = parts[-1]
                 current_path = os.path.join(current_path, last_part)
                 if not os.path.exists(current_path):
-                    os.makedirs(current_path)
-
+                    os.makedirs(current_path
             # Перемещаем файл в конечную папку
             try:
                 shutil.move(file_path, current_path)
                 print(f"Файл '{filename}' перемещен в '{current_path}'.")
             except Exception as e:
                 print(f"Ошибка при перемещении файла '{filename}': {e}")
-
 # Текстовая метка
 label = tk.Label(root, text="Введите путь к папке:")
 label.pack(pady=10)
